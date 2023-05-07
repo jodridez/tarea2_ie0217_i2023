@@ -24,13 +24,70 @@ OTROS ACUERDOS EN EL SOFTWARE.
 */
 
 #include <iostream>
+
+#include <cmath>
+
 #include "headerExceptions.hpp"
+
+//Para generar excepciones;
+float raiz(int a) {
+  if (a == -1) {
+    throw std::logic_error("No se puede calcular la raiz cuadrada de -1");
+  }
+  return sqrt(a);
+
+}
+
+int valor(int i) {
+  int arr[3] = {
+    1,
+    2,
+    3
+  };
+  if (i > 2) {
+    throw std::range_error("El indice esta fuera del rango");
+  }
+  return arr[i];
+}
+
+int division(int a, int b) {
+  if (b == 0) {
+    throw std::invalid_argument("El divisor no puede ser cero");
+  }
+  return a / b;
+}
 
 int main() {
 
   try { //Codigo que puede generar una excepcion.
     throw MyException(); //Lanza la excepcion.
-  } catch (std::exception& e) { //maneja la excepcion.
+  } catch (std::exception & e) { //maneja la excepcion.
+    std::cout << "Error: " << e.what() << std::endl;
+  }
+
+  //Excepcion 1: logic_error.
+  try { //Codigo que puede generar una excepcion.
+    int a = -1;
+    float r = raiz(a);
+
+  } catch (std::exception & e) { //maneja la excepcion.
+    std::cout << "Error: " << e.what() << std::endl;
+  }
+
+  //Excepcion 2: range_error
+  try { //Codigo que puede generar una excepcion.
+    int i = 3;
+    int v = valor(i);
+  } catch (std::exception & e) { //maneja la excepcion.
+    std::cout << "Error: " << e.what() << std::endl;
+  }
+
+  //Excepcion 3: logic_error.
+  try { //Codigo que puede generar una excepcion.
+    int a = 1;
+    int b = 0;
+    int c = division(a, b);
+  } catch (std::exception & e) { //maneja la excepcion.
     std::cout << "Error: " << e.what() << std::endl;
   }
 
