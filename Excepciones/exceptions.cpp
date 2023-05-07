@@ -24,19 +24,13 @@ OTROS ACUERDOS EN EL SOFTWARE.
 */
 
 #include <iostream>
-
-class MyException : public std::exception {
-public:
-  const char* what() const throw() {
-    return "My custom exception";
-  }
-};
+#include "headerExceptions.hpp"
 
 int main() {
 
-  try {
-    throw MyException();
-  } catch (std::exception& e) {
+  try { //Codigo que puede generar una excepcion.
+    throw MyException(); //Lanza la excepcion.
+  } catch (std::exception& e) { //maneja la excepcion.
     std::cout << "Error: " << e.what() << std::endl;
   }
 
