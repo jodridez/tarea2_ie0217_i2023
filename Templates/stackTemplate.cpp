@@ -24,11 +24,9 @@ OTROS ACUERDOS EN EL SOFTWARE.
 */
 
 #include <iostream> //Necesario para la entrada y salida de datos a traves de la terminal.
-
-#include <vector> //Necesario para .push_back(), .empty(), .back(), .pop_back(), .clear(), .size(), .begin() ,.end().
-
-#include <stdexcept> //Necesario para el manejo de exepciones.
-
+//#include <vector> Innecesario para la copilacion.
+//#include <algorithm> Innecesario para la copilacion.
+//#include <stdexcept> Innecesario para la copilacion porque no se genera un error en el try.
 #include <functional> //Necesario para std::function.
 
 //Implementación completa de una clase pila mediante templates.
@@ -105,6 +103,28 @@ int main() {
   } catch (const std::exception & e) { //Si ocurre un error.
     std::cerr << "Exception: " << e.what() << std::endl; //Imprime la exepcion. exception::what()  devuelve la cadena de caracteres que describen la exepcion
   }
+
+  //Se imprime dos saltos de linea
+  std::cout << std::endl;
+  std::cout << std::endl;
+
+  //se agrega una nueva instancia 
+  Stack < float > f; //Define una pila tipo float llamada f.
+  f.push(20.21); //Agrega un el parametro 20.21 al final de la lista.
+  f.push(20.54); //Agrega un el parametro 20.54 al final de la lista.
+  f.push(65.24); //Agrega un el parametro 65.24 al final de la lista.
+
+  //Imprime el tamaño de la lista.
+  std::cout << "Nueva pila con datos tipo float:" << std::endl;
+  std::cout << "Stack size: " << f.size() << std::endl;
+
+  //Imprime los valores en de menor indice a mayor
+  f.foreach([](float & value) {
+    std::cout << "Value: " << value << std::endl;
+  });
+
+  std::cout << std::endl;
+  std::cout << std::endl;
 
   return 0;
 }
