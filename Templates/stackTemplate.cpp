@@ -24,9 +24,10 @@ OTROS ACUERDOS EN EL SOFTWARE.
 */
 
 #include <iostream> //Necesario para la entrada y salida de datos a traves de la terminal.
-//#include <vector> Innecesario para la copilacion.
+ //#include <vector> Innecesario para la copilacion.
 //#include <algorithm> Innecesario para la copilacion.
 //#include <stdexcept> Innecesario para la copilacion porque no se genera un error en el try.
+
 #include <functional> //Necesario para std::function.
 
 //Implementación completa de una clase pila mediante templates.
@@ -125,6 +126,13 @@ int main() {
 
   std::cout << std::endl;
   std::cout << std::endl;
+
+  /*try { //Bloque de codigo que genera un error.
+    f.clear(); //Se vacia la lista.
+    f.pop(); //Se intenta sacar un valor de una lista vacia.
+  } catch (const std::exception & e) { //Si ocurre un error.
+    std::cerr << "Exception: " << e.what() << std::endl; //Imprime la exepcion. exception::what()  devuelve la cadena de caracteres que describen la exepcion
+  }*/
 
   return 0;
 }
